@@ -10,19 +10,21 @@ weightChange = 0.1
 class Task(object):
     """A simple implementation of my Task"""
 
-    def __init__(self, a,b,c,d,e,f):
+    def __init__(self, a,b,c,d,e,f,g):
 
         global weightChange
 
-        self.StartTime    = a
-        self.EndTime      = b
-        self.Difficulty   = c # optimizing variable
-        self.Movability   = d # optimizing variable
-        self.Importance   = e
-        self.Deadline     = f
+        self.StartTime    = float(a)
+        self.EndTime      = float(b)
+        self.Difficulty   = float(c) # optimizing variable
+        self.Movability   = float(d) # optimizing variable
+        self.Importance   = float(e)
+        self.Deadline     = float(f)
+        self.Name         = str(g)
 
 
     def printInfo(self):
+        print("\nName" + self.Name)
         print("Start Time:" + str(self.StartTime) + " End Time:" + str(self.EndTime))
     def isValid(self, varaaa):
         return True
@@ -53,14 +55,36 @@ def OptimizeRun(my_tasks):
     #print(derivative(funkyMice,3,0.1))
 
 def Main():
+
+    number = int(input('Enter the number of tasks : '))
     iterations = int(input('Enter the number of iterations : '))
     my_tasks = []
-    for i in range(1,5):
-        my_tasks.append(Task(10 + i/2 , 10 + i/2 + 0.1,   5,5,i/2,i/2))
-    my_tasks.append(Task(0,0.1,10,10,0,0))
-    my_tasks.append(Task(23.9,24,10,10,0,0))
+
+    for i in range(1,number+1):
+
+        print("\n")
+        print('Enter the weights of the tasks: ')
+
+        a = float(input('Enter the StartTime: '))
+        b = float(input('Enter the EndTime: '))
+        c = float(input('Enter the Difficulty: '))
+        d = float(input('Enter the Movability: '))
+        e = float(input('Enter the Importance: '))
+        f = 1000 # leave this for later
+        g = str(input('Enter the Name: '))
+        my_tasks.append(Task(a,b,c,d,e,f,g))
+
+    # just boundary things
+    my_tasks.append(Task(0,0.1,10,10,0,0,'BegDay'))
+    my_tasks.append(Task(23.9,24,10,10,0,0,'EndDay'))
+
+
     for i in range(iterations):
         OptimizeRun(my_tasks)
+
+    print('\n\n')
+
+
     for i in my_tasks:
         i.printInfo()
 
