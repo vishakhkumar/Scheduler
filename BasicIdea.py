@@ -26,17 +26,20 @@ class Task(object):
         return "{}: {} {}".format(self.Name,
                                   self.StartTime,
                                   self.EndTime)
-"""
+
     def Description(self):
-        return ( "\n ******************Do not alter these lines******************"
-        "\n Name: " + self.Name
-        "\n Start Time: " + str(self.StartTime)
-        "\n End Time: " + str(self.EndTime)
-        "\n Difficulty: " + str(self.Difficulty)
-        "\n Movability: " + str(self.Movability)
-        "\n Importance: " + str(self.Importance)
-        "\n Deadline: " + str(self.Deadline) + "\n")
-"""
+        return (
+        "\n ******************Do not alter these lines******************"
+        "\n *Name: " + self.Name +
+        "\n *Start Time: " + str(self.StartTime) +
+        "\n *End Time: " + str(self.EndTime) +
+        "\n *Difficulty: " + str(self.Difficulty) +
+        "\n *Movability: " + str(self.Movability) +
+        "\n *Importance: " + str(self.Importance) +
+        "\n *Deadline: " + str(self.Deadline) +
+        "\n ******************Do not alter these lines******************"+
+        "\n")
+
 
     def isValid(self, varaaa):
         if self.EndTime < self.Deadline:
@@ -109,8 +112,8 @@ def Main():
     print('\n\n')
 
 
-#    for i in my_tasks:
-#        print(i.Description())
+    for i in my_tasks:
+        print(i.Description())
 
 
 Main()
