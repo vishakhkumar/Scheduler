@@ -22,19 +22,26 @@ class Task(object):
         self.Deadline     = float(f)
         self.Name         = str(g)
 
+    def __repr__(self):
+        return "{}: {} {}".format(self.Name,
+                                  self.StartTime,
+                                  self.EndTime)
 
     def printInfo(self):
-        print("\nName" + self.Name)
-        print("Start Time:" + str(self.StartTime) + " End Time:" + str(self.EndTime))
+        print("\nName: " + self.Name)
+        print("Start Time: " + str(self.StartTime) + " End Time: " + str(self.EndTime))
     def isValid(self, varaaa):
         return True
+
+
+
 
     def Optimize(self, arr):
 
         # self.StartTime - the thing we're optimizing.
         # self.EndTime - the thing we are NOT optimizing.
 
-        # doing my silly summation bullshit. Not satanic bullshit, I promise.
+        # doing my silly summation bullshit. Not satanic stuff, I promise.
 
         change = 0
 
@@ -48,6 +55,10 @@ class Task(object):
         if self.isValid(change + self.StartTime):
             self.StartTime = self.StartTime + change
             self.EndTime = self.EndTime + change
+
+def getKey(obj):
+
+    return obj.StartTime
 
 def OptimizeRun(my_tasks):
     for obj in my_tasks:
@@ -81,6 +92,8 @@ def Main():
 
     for i in range(iterations):
         OptimizeRun(my_tasks)
+
+    my_tasks = sorted(my_tasks,key=getKey)
 
     print('\n\n')
 
