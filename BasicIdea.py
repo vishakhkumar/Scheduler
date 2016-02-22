@@ -26,12 +26,23 @@ class Task(object):
         return "{}: {} {}".format(self.Name,
                                   self.StartTime,
                                   self.EndTime)
+"""
+    def Description(self):
+        return ( "\n ******************Do not alter these lines******************"
+        "\n Name: " + self.Name
+        "\n Start Time: " + str(self.StartTime)
+        "\n End Time: " + str(self.EndTime)
+        "\n Difficulty: " + str(self.Difficulty)
+        "\n Movability: " + str(self.Movability)
+        "\n Importance: " + str(self.Importance)
+        "\n Deadline: " + str(self.Deadline) + "\n")
+"""
 
-    def printInfo(self):
-        print("\nName: " + self.Name)
-        print("Start Time: " + str(self.StartTime) + " End Time: " + str(self.EndTime))
     def isValid(self, varaaa):
-        return True
+        if self.EndTime < self.Deadline:
+            return True
+        else:
+            return False
 
 
 
@@ -98,8 +109,8 @@ def Main():
     print('\n\n')
 
 
-    for i in my_tasks:
-        i.printInfo()
+#    for i in my_tasks:
+#        print(i.Description())
 
 
 Main()
