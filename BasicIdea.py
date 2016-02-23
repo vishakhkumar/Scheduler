@@ -14,65 +14,62 @@ class Task(object):
 
         global weightChange
 
-        self.StartTime    = float(a)
-        self.EndTime      = float(b)
-        self.Difficulty   = float(c) # optimizing variable
-        self.Movability   = float(d) # optimizing variable
-        self.Importance   = float(e)
-        self.Deadline     = float(f)
-        self.Name         = str(g)
+        self.Weights = {
+        'StartTime'    : float(a),
+        'EndTime'      : float(b),
+        'Difficulty'   : float(c), # optimizing variable
+        'Movability'   : float(d), # optimizing variable
+        'Importance'   : float(e),
+        'Deadline'     : float(f),
+        'Name'         : str(g)
+        }
+
 
     def __repr__(self):
-        return "{}: {} {}".format(self.Name,
-                                  self.StartTime,
-                                  self.EndTime)
+        return "{}: {} {}".format(Weights['Name'],
+                                  Weights['StartTime'],
+                                  Weights['EndTime'])
 
     def Description(self):
         return (
         "\n ******************Do not alter these lines******************"
-        "\n *Name: " + self.Name +
-        "\n *Start Time: " + str(self.StartTime) +
-        "\n *End Time: " + str(self.EndTime) +
-        "\n *Difficulty: " + str(self.Difficulty) +
-        "\n *Movability: " + str(self.Movability) +
-        "\n *Importance: " + str(self.Importance) +
-        "\n *Deadline: " + str(self.Deadline) +
+        "\n *   Name        : "  + str(self.Weights['Name'])          +
+        "\n *   Start Time  : "  + str(self.Weights['StartTime'])     +
+        "\n *   End Time    : "  + str(self.Weights['EndTime'])       +
+        "\n *   Difficulty  : "  + str(self.Weights['Difficulty'])    +
+        "\n *   Movability  : "  + str(self.Weights['Movability'])    +
+        "\n *   Importance  : "  + str(self.Weights['Importance'])    +
+        "\n *   Deadline    : "  + str(self.Weights['Deadline'])      +
         "\n ******************Do not alter these lines******************"+
         "\n")
 
 
     def isValid(self, varaaa):
-        if self.EndTime < self.Deadline:
+        if self.Weights['EndTime'] < self.Weights['Deadline']:
             return True
         else:
             return False
 
-
-
-
-    def Optimize(self, arr):
+    def Optimize(self,arr):
 
         # self.StartTime - the thing we're optimizing.
         # self.EndTime - the thing we are NOT optimizing.
-
         # doing my silly summation bullshit. Not satanic stuff, I promise.
-
         change = 0
-
         for task in arr:
-            change = change + (task.Difficulty + self.Difficulty)/(math.exp(abs(task.EndTime - self.StartTime)))
-            change = change - (task.Difficulty + self.Difficulty)/(math.exp(abs(self.EndTime - task.StartTime)))
+            change = change + (task.Weights['Difficulty'] + self.Weights['Difficulty'])/(math.exp(abs(task.Weights['EndTime'] - self.Weights['StartTime'])))
+            change = change - (task.Weights['Difficulty'] + self.Weights['Difficulty'])/(math.exp(abs(self.Weights['EndTime'] - task.Weights['StartTime'])))
         # just scaling things down.
         change = change*weightChange # just making my change a nice thing and
-        change = (maximumScale - self.Movability)/self.Movability * change
+        change = (maximumScale - self.Weights['Movability'])/self.Weights['Movability'] * change
         # just checking
-        if self.isValid(change + self.StartTime):
-            self.StartTime = self.StartTime + change
-            self.EndTime = self.EndTime + change
+        if self.isValid(change + self.Weights['StartTime']):
+            self.Weights['StartTime'] = self.Weights['StartTime'] + change
+            self.Weights['EndTime'] = self.Weights['EndTime'] + change
 
 def getKey(obj):
 
-    return obj.StartTime
+    return obj.Weights['StartTime']
 
 def OptimizeRun(my_tasks):
     for obj in my_tasks:
@@ -97,6 +94,8 @@ def Main():
         e = float(input('Enter the Importance: '))
         f = 1000 # leave this for later
         g = str(input('Enter the Name: '))
+
+        print("\n")
         my_tasks.append(Task(a,b,c,d,e,f,g))
 
     # just boundary things
