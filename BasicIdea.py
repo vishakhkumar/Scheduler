@@ -84,7 +84,7 @@ def ParseDescription(str):
     for line in releventDescription:
         for i in d.keys():
             if i in line
-                task(line.split(':')[1]
+                task(line.split(':')[1])
 
 def Main():
 
