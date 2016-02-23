@@ -10,18 +10,19 @@ weightChange = 0.1
 class Task(object):
     """A simple implementation of my Task"""
 
-    def __init__(self, a,b,c,d,e,f,g):
+
+    def __init__(self,*args):
 
         global weightChange
 
         self.Weights = {
-        'StartTime'    : float(a),
-        'EndTime'      : float(b),
-        'Difficulty'   : float(c), # optimizing variable
-        'Movability'   : float(d), # optimizing variable
-        'Importance'   : float(e),
-        'Deadline'     : float(f),
-        'Name'         : str(g)
+        'StartTime'    : float(args[0]),
+        'EndTime'      : float(args[1]),
+        'Difficulty'   : float(args[2]), # optimizing variable
+        'Movability'   : float(args[3]), # optimizing variable
+        'Importance'   : float(args[4]),
+        'Deadline'     : float(args[5]),
+        'Name'         : str(args[6])
         }
 
 
@@ -32,15 +33,15 @@ class Task(object):
 
     def Description(self):
         return (
-        "\n ******************Do not alter these lines******************"
-        "\n *   Name        : "  + str(self.Weights['Name'])          +
-        "\n *   Start Time  : "  + str(self.Weights['StartTime'])     +
-        "\n *   End Time    : "  + str(self.Weights['EndTime'])       +
-        "\n *   Difficulty  : "  + str(self.Weights['Difficulty'])    +
-        "\n *   Movability  : "  + str(self.Weights['Movability'])    +
-        "\n *   Importance  : "  + str(self.Weights['Importance'])    +
-        "\n *   Deadline    : "  + str(self.Weights['Deadline'])      +
-        "\n ******************Do not alter these lines******************"+
+        "\n *#****************Do not alter these lines******************"
+        "\n *#*Name        : "  + str(self.Weights['Name'])          +
+        "\n *#*StartTime   : "  + str(self.Weights['StartTime'])     +
+        "\n *#*EndTime     : "  + str(self.Weights['EndTime'])       +
+        "\n *#*Difficulty  : "  + str(self.Weights['Difficulty'])    +
+        "\n *#*Movability  : "  + str(self.Weights['Movability'])    +
+        "\n *#*Importance  : "  + str(self.Weights['Importance'])    +
+        "\n *#*Deadline    : "  + str(self.Weights['Deadline'])      +
+        "\n *#****************Do not alter these lines******************"+
         "\n")
 
 
@@ -75,6 +76,15 @@ def OptimizeRun(my_tasks):
     for obj in my_tasks:
         obj.Optimize(my_tasks)
     #print(derivative(funkyMice,3,0.1))
+
+def ParseDescription(str):
+
+
+    releventDescription = [line for line in str.split('\n') if "*#*" in line]
+    for line in releventDescription:
+        for i in d.keys():
+            if i in line
+                task(line.split(':')[1]
 
 def Main():
 
