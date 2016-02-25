@@ -1,4 +1,5 @@
 # just defining reference points so that we don't have to hard code anything in the future.
+import math
 
 stringToParse = ( "*#****************Do not alter these lines******************\n"+
  "*#*Name        : EndDay\n"+
@@ -10,7 +11,8 @@ stringToParse = ( "*#****************Do not alter these lines******************\
  "*#*Deadline    : 0.0\n"+
  "*#****************Do not alter these lines******************\n")
 
-import math
+
+# just scale things.
 maximumScale = 10
 minimumScale = 1
 weightChange = 0.1
@@ -18,12 +20,9 @@ weightChange = 0.1
 
 class Task(object):
     """A simple implementation of my Task"""
-
     def __init__(self,vari):
         self.Weights = vari
-
     def __repr__(self):
-
         return '{}: {} {}'.format(self.Weights['Name'],self.Weights['StartTime'],self.Weights['EndTime'])
     def Description(self): # creates a description.
         return (
@@ -78,7 +77,7 @@ def ParseDescription(str):  #takes description from Calendar and makes an object
         for i in range(0,len(b)):
             str[j] = str[j].replace(b[i],"")
 
-    #str has two useless lines at the beginning and ending.
+    # str has two useless lines at the beginning and ending.
     # just removing them.
     str = str[1:len(str)-1]
     Name  = [line.split(':')[0] for line in str]
@@ -105,19 +104,12 @@ def defaultWeights(*args):
     return Weights
 
 def Main():
-
-
-
-
     number = int(input('Enter the number of tasks : '))
     iterations = int(input('Enter the number of iterations : '))
     my_tasks = []
-
     for i in range(1,number+1):
-
         print("\n")
         print('Enter the weights of the tasks: ')
-
         a = float(input('Enter the StartTime: '))
         b = float(input('Enter the EndTime: '))
         c = float(input('Enter the Difficulty: '))
@@ -125,7 +117,6 @@ def Main():
         e = float(input('Enter the Importance: '))
         f = 1000 # leave this for later
         g = str(input('Enter the Name: '))
-
         print("\n")
         my_tasks.append(Task(defaultWeights(a,b,c,d,e,f,g)))
 
@@ -145,5 +136,5 @@ def Main():
     for i in my_tasks:
         print(i.Description())
 
-ParseDescription(stringToParse)
-#Main()
+#ParseDescription(stringToParse)
+Main()
