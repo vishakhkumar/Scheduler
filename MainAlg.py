@@ -59,10 +59,11 @@ class Task(object):
 
 def getKey(obj):
     return obj.Weights['StartTime']
+
 def OptimizeRun(my_tasks):
     for obj in my_tasks:
         obj.Optimize(my_tasks)
-    #print(derivative(funkyMice,3,0.1))
+
 def ParseDescription(str):  #takes description from Calendar and makes an object from it.
 
     # just removing unnecessary stuff from the description.
@@ -106,6 +107,7 @@ def Main():
     number = int(input('Enter the number of tasks : '))
     iterations = int(input('Enter the number of iterations : '))
     my_tasks = []
+    
     for i in range(1,number+1):
         print("\n")
         print('Enter the weights of the tasks: ')
