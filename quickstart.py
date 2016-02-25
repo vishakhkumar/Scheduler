@@ -65,7 +65,7 @@ def main():
 
     print(calendar_list_entry['id'])
 
-'''
+
     now = datetime.datetime.utcnow().isoformat() + 'Z' # 'Z' indicates UTC time
     print('Getting the upcoming 10 events')
     eventsResult = service.events().list(
@@ -82,7 +82,7 @@ def main():
     for event in events:
         start = event['start'].get('dateTime', event['start'].get('date'))
         print(start, event['summary'])
-'''
+
 
 if __name__ == '__main__':
     main()
